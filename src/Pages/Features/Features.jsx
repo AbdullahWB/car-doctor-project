@@ -11,7 +11,7 @@ const Features = () => {
         <div className='mb-[130px]'>
             <div className='text-center'>
                 <h4 className='text-primary text-xl font-bold'>Core Features</h4>
-                <h1 className='text-4xl font-medium my-5'>Why Choose Us</h1>
+                <h1 className='text-4xl font-bold text-[#151515] my-5'>Why Choose Us</h1>
                 <p>the majority have suffered alteration in some form, by injected humour, or randomised <br /> words which don't look even slightly believable. </p>
             </div>
             <div className='grid md:grid-cols-6 grid-cols-2 gap-[20px] mt-10 mb-10'>
