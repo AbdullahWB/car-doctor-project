@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 import Checkout from "../../Pages/Checkout/Checkout";
+import CheckoutForm from "../../Pages/Checkout/CheckoutForm";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <Checkout></Checkout>
+            },
+            {
+                path: '/checkoutForm',
+                element: <CheckoutForm></CheckoutForm>
             }
         ]
     }

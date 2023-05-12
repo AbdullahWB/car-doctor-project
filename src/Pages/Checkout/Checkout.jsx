@@ -139,7 +139,7 @@ const Checkout = () => {
                         </div>
                     </div>
                     <h2 className='text-gray-900 font-bold text-[45px] mt-5'>Price $250.00</h2>
-                    <Link><button className='btn btn-primary w-full text-white mt-5'>Proceed Checkout</button></Link>
+                    <Link to='/checkoutForm'><button className='btn btn-primary w-full text-white mt-5'>Proceed Checkout</button></Link>
                 </div>
             </div>
         </div>
