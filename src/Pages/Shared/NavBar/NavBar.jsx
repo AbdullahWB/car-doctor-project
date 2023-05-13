@@ -20,6 +20,9 @@ const NavBar = () => {
         <li><Link>Services</Link></li>
         <li><Link>Blog</Link></li>
         <li><Link>Contact</Link></li>
+        {
+            user?. email ? <li><Link to='/bookings'>Bookings</Link></li> : <></>
+        }
     </>
     return (
         <div>
