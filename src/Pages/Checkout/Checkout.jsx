@@ -4,9 +4,12 @@ import banner1 from '../../assets/images/banner/3.jpg'
 import banner2 from '../../assets/images/banner/2.jpg'
 import { FaArrowRight, FaFileAlt, FaPlayCircle } from "react-icons/fa";
 import logo from '../../assets/logo.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Checkout = () => {
+    const books = useLoaderData()
+    console.log(books);
+    const {_id, price, title, img} = books
     return (
         <div className='mt-[50px]'>
             <div className='mb-[130px] relative rounded-xl border border-primary'>
@@ -21,10 +24,10 @@ const Checkout = () => {
             <div className='grid grid-cols-3 gap-8'>
                 <div className='col-span-2'>
                     <div>
-                        <img className='h-[400px] w-full object-cover rounded-xl' src={banner1} alt="" />
+                        <img className='h-[400px] w-full object-cover rounded-xl mb-[100px]' src={img} alt="" />
                     </div>
                     <div>
-                        <h1 className='text-[45px] font-bold text-gray-900'>Unique Car Engine Service</h1>
+                        <h1 className='text-[45px] font-bold text-gray-900 mb-5'>{title}</h1>
                         <p className='text-gray-400 tracking-widest text-[16px]'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
                         <div className='grid grid-cols-2 gap-8 mt-10 mb-10'>
                             <div className="card w-full py-10 px-5 border-t-4 border-primary bg-[#F3F3F3]">
@@ -138,8 +141,8 @@ const Checkout = () => {
                             <Link><button className='btn btn-primary text-white absolute -bottom-5 left-1/4'>Get A Quote</button></Link>
                         </div>
                     </div>
-                    <h2 className='text-gray-900 font-bold text-[45px] mt-5'>Price $250.00</h2>
-                    <Link to='/checkoutForm'><button className='btn btn-primary w-full text-white mt-5'>Proceed Checkout</button></Link>
+                    <h2 className='text-gray-900 font-bold text-[45px] mt-5'>Price ${price}</h2>
+                    <Link to={`/checkoutForm/${_id}`}><button className='btn btn-primary w-full text-white mt-5'>Proceed Checkout</button></Link>
                 </div>
             </div>
         </div>
