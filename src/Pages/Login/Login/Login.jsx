@@ -1,22 +1,44 @@
 import React, { useContext } from 'react';
 import img from '../../../assets/images/login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, json, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const { signIn } = useContext(AuthContext)
+    const location = useLocation();
+    const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSingIn = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log( email, password);
+        console.log(email, password);
 
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                const loggedUser = {
+                    email: user.email
+                }
+                console.log(loggedUser);
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('jwt response', data);
+                        // localStorage is not a best place to store user information or token
+                        localStorage.setItem('car-access-token', data.token)
+                        navigate(from, { replace: true })
+                    })
             })
             .catch(error => console.log(error))
     }
@@ -30,7 +52,7 @@ const Login = () => {
                     <div className='flex justify-center items-center'>
                         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                             <form onSubmit={handleSingIn} className="card-body">
-                            <h1 className='text-center text-3xl font-bold mb-10'>Sign Up</h1>
+                                <h1 className='text-center text-3xl font-bold mb-10'>Sign Up</h1>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>

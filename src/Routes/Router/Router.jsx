@@ -27,12 +27,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                element: <Checkout></Checkout>,
+                element: <PrivetRoute><Checkout></Checkout></PrivetRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/services/${params.id}`)
             },
             {
                 path: '/checkoutForm/:id',
-                element: <CheckoutForm></CheckoutForm>, 
+                element: <PrivetRoute><CheckoutForm></CheckoutForm></PrivetRoute>, 
                 loader: ({params}) => fetch(`http://localhost:3000/services/${params.id}`)
             },
             {
